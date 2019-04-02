@@ -1,0 +1,23 @@
+main(){
+   variables:[x,y,z:integer]
+   [a,b,c:decimal]
+   [d,e,f:string]
+
+   x:=10
+   y:=x+20
+   z:=x+y
+   while (z=0) {
+     for[x:=0][x<=100]{
+       if (x>5) {
+         a:=5.5
+         b:=a+10.66
+         c:=a+b
+       }
+     }
+   cycle {
+      a:=100.55
+      b:= 255.57
+      c:= a*b
+   } (a<>0)
+   }
+}
