@@ -1,23 +1,34 @@
-main(){
-   variables:[x,y,z:integer]
-   [a,b,c:decimal]
-   [d,e,f:string]
+/* Este es un programa de prueba */
 
-   x:=10
+/* seccion main */
+main(){ 
+   /* declaracion de variables */
+   variables:[x,y,z:integer] /* declaracion de variables */
+   [a,  b,c:  decimal]
+   [d,  e,  f:  string]
+
+/* inicio de las instrucciones */
+   x:=20
+   d:= "hola, este es un texto entre comillas"
+   c:= "este es otro texto"
    y:=x+20
    z:=x+y
+  /* ciclo del while */
    while (z=0) {
+     /*cyclo del for */
      for[x:=0][x<=100]{
+       /* condicion */
        if (x>5) {
          a:=5.5
          b:=a+10.66
          c:=a+b
        }
      }
+   /* ciclo: cycle */
    cycle {
       a:=100.55
       b:= 255.57
       c:= a*b
    } (a<>0)
    }
-}
+} /* fin del programa */
