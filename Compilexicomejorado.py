@@ -40,6 +40,7 @@ def main():
 			if edo == 0:   #limpia el estado en cada iteración
 				palabra=""   #limpia la variable "palabra" cada que cambia de estado, y después de haber formado una palabra.                         
 			if edo in estado_final: #se cumple cuando se encuentra un estado final.
+				edo=0
 				palabra=""  #limpia la variable nuevamente, después del estado final.
 			edo=matriz[edo][columna]  #cambia el estado,  por medio de la columna obtenida.
 
