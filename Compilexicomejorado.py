@@ -36,7 +36,7 @@ def main():
 				cadena.append(ord(char))  #Guarda los caracteres en la lista cadena convertido en código ascii
 		while posicion < len(cadena):   #entra al ciclo while mientras la posición está dentro del tamñano de la cadena formada.
 			caracter=cadena[posicion]   #se asigna una variable para obtener la posición de la lectura en la cadena.
-			columna=columnas(caracter,operadores_ascii)  #obtiene el número de columna, entrando a la función "columnas"
+			columna=columnas(caracter,operadores_ascii,edo)  #obtiene el número de columna, entrando a la función "columnas"
 			if edo == 0:   #limpia el estado en cada iteración
 				palabra=""   #limpia la variable "palabra" cada que cambia de estado, y después de haber formado una palabra.                         
 			if edo in estado_final: #se cumple cuando se encuentra un estado final.
@@ -85,17 +85,21 @@ matriz = [    #      0    1    2    3    4    5    6    7    8    9    10   11  
 	          [  17,  17,  17,  17,  17,  17,  17,  17,  17,  17,  17,  17,  17,  17,  17,  17,  17,  17,  17, 209,  17]  #17
 	         ]
 
-def columnas(caracter,operadores_ascii):  #inicio de funsión para ubicar el número de columna dentro de la matriz
-	if caracter >=48 and caracter <=57: 
+def columnas(caracter,operadores_ascii, edo):  #inicio de funsión para ubicar el número de columna dentro de la matriz
+	columna=0
+	if caracter >=48 and caracter <=57:
 		columna= 0 #define a la columna número de acuerdo a ese rango de codigo ascii que son números del 0-9
-	else:   #si no entra en ese rango pasa a la siguiente condición.
-		if caracter >=97 and caracter <=122 or caracter >=65 and caracter <=90: #Condicional que define el rango para las letras minusculas y mayusculas.
-			columna= 2  #se le asigna la columna número dos a los caracteres que son letras.
-		else: # 
-			if caracter in operadores_ascii: # entra a condicional cuando el caracter esta dentro de la lista de codigo ascii
-				columna= operadores_ascii.index(caracter)+3 #se obtiene un indice de la matriz a partir de los simbolos diferentes a la columna letra y digito.
-			else: # sale de la condición si el caracter es desconocido.
-				print('Caracter no valido:'+str(caracter))
+	else:
+		if (edo ==1 and caracter in[69,101]):
+			columna=1
+		else:   #si no entra en ese rango pasa a la siguiente condición.
+			if caracter >=97 and caracter <=122 or caracter >=65 and caracter <=90: #Condicional que define el rango para las letras minusculas y mayusculas.
+				columna= 2  #se le asigna la columna número dos a los caracteres que son letras.
+			else:
+				if caracter in operadores_ascii: # entra a condicional cuando el caracter esta dentro de la lista de codigo ascii
+					columna= operadores_ascii.index(caracter)+3 #se obtiene un indice de la matriz a partir de los simbolos diferentes a la columna letra y digito.
+				else: # sale de la condición si el caracter es desconocido.
+					print('Caracter no valido:'+str(caracter))
 	return columna  #la funsión devuelve el indice obtenido de la columna.
 	
 def salidas(edo,palabra):   #función que devuelve las salidas del programa.

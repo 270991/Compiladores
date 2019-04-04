@@ -8,10 +8,10 @@ main(){
    [d,  e,  f:  string]
 
 /* inicio de las instrucciones */
-   x:=20
+   x:=20e-3
    d:= "hola, este es un texto entre comillas"
    c:= "este es otro texto"
-   y:=x+20
+   y:=x+20E+3
    z:=x+y
   /* ciclo del while */
    while (z=0) {
