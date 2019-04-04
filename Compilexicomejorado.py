@@ -63,7 +63,6 @@ def main():
 	print('Tabla de comentarios:')
 	print(tabla_comentarios)
 #------------------------------------------------
-
 matriz = [    #      0    1    2    3    4    5    6    7    8    9    10   11   12 13   14   15   16   17   18   19   20      
 	      #     dig  E/e  let   <    >    (     )   +    -    ,    *    /   {    }    [    ]    :    .    =    "    esp
 	          [   1,  10,  10,  11,  12, 303, 304, 305, 306, 307, 308, 14, 310, 311, 312,  313, 13, 400,  314,  17,   0], #0 
@@ -100,35 +99,35 @@ def columnas(caracter,operadores_ascii):  #inicio de funsión para ubicar el nú
 	return columna  #la funsión devuelve el indice obtenido de la columna.
 	
 def salidas(edo,palabra):   #función que devuelve las salidas del programa.
-		if (edo >=200 and edo <=203) or (edo ==209):
-			if palabra not in tabla_constantes:# Registra los numeros a la tabla de constantes
-				tabla_constantes.append(palabra)
-				ind = tabla_constantes.index(palabra)+inicio_constantes
-				tablaDeTokens.append([inicio_constantes,ind,palabra])
+		if (edo >=200 and edo <=203) or (edo ==209): #condicional para registrar en tabla de constantes
+			if palabra not in tabla_constantes:# pasa al siguiente estatuto si la palabra no está en la tabla.
+				tabla_constantes.append(palabra) #guarda la palabra final en la tabla de constantes.
+				ind = tabla_constantes.index(palabra)+inicio_constantes #obtiene el indice de la tabla constantes e inicia en el numéro asignado de la variable "inicio de constantes"
+				tablaDeTokens.append([inicio_constantes,ind,palabra]) #guarda la palabra en la tabla de token, junto con el indice obtenido, como una constante
 			else:
-				ind = tabla_constantes.index(palabra) #obtiene el indice si la constante ya esta en la tabla
-				tablaDeTokens.append([inicio_constantes,ind,palabra])
+				ind = tabla_constantes.index(palabra) #obtiene el indice si la constante ya esta en la tabla de constantes.
+				tablaDeTokens.append([inicio_constantes,ind,palabra]) #almacena la palabra en la tabla de tokens anexando su idice que obtuvo de la tabla constantes.
 
-		if edo==204: # Registra los identificadores y las palabras reservadas
-			if palabra in reservadas:
-				tok= reservadas.index(palabra)+inicio_palabras_reservadas
-				tablaDeTokens.append([inicio_palabras_reservadas,tok,palabra])
+		if edo==204: # Condicional que registra los identificadores y las palabras reservadas
+			if palabra in reservadas: # entra a la condición cuando la palabra existe en la lista de las palbras reservadas.
+				tok= reservadas.index(palabra)+inicio_palabras_reservadas #genera el indice de la lista de palabras reservadas más el inicio de la variable "palabras reservadas".
+				tablaDeTokens.append([inicio_palabras_reservadas,tok,palabra]) #guarda en la tabla de tokens junto con indice obtenido y palabra, como una palabra reservada.
 			else:
-				if palabra not in tabla_variables:
-					tabla_variables.append(palabra)
+				if palabra not in tabla_variables: #entra a condicional si la palabra no esta en la tabla de variables.
+					tabla_variables.append(palabra) #guarda la palabra en la tabla de variables siempre y cuando no este registrada antes.
 					ind = tabla_variables.index(palabra) #obtiene el indice si la variable ya esta en la tabla
-					tablaDeTokens.append([inicio_identificadores,ind,palabra])
+					tablaDeTokens.append([inicio_identificadores,ind,palabra]) #guarda en la tabla de token como un identificador.
 				else:
-					ind  = tabla_variables.index(palabra)
-					tablaDeTokens.append([inicio_identificadores,ind,palabra])
+					ind  = tabla_variables.index(palabra) #obtiene el indice de de la tabla de variables, siempre y cuando ya exista.
+					tablaDeTokens.append([inicio_identificadores,ind,palabra]) #guarda en la tabla de token como un identificador, junto con indice obtenido.
 
 		if (edo >=205 and edo <=208) or (edo >=300 and edo <=314): #Registra los simbolos especiales
-			if palabra in simbolos:
-				ind =simbolos.index(palabra)+inicio_simbolos_especiales
-				tablaDeTokens.append([inicio_simbolos_especiales,ind,palabra])
+			if palabra in simbolos: #condicional para todos los simbolos.
+				ind =simbolos.index(palabra)+inicio_simbolos_especiales #obtiene el indice cuando ya se encuentra registrada la palabra. 
+				tablaDeTokens.append([inicio_simbolos_especiales,ind,palabra]) #guarda el token en la tabla como un simbolo especial, seguido de su indice e inicio de variable "simbolos especiales".
 
-		if edo==315: #Registro de comentarios
-			tabla_comentarios.append([palabra])
+		if edo==315: #condicional para registro de comentarios
+			tabla_comentarios.append([palabra]) #guarda los comentarios en la tabla de comentarios.
 
 		return 0
 		
